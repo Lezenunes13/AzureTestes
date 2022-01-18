@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import flask
 from datetime import datetime
 from azure.eventhub import EventHubConsumerClient
 import os
 import threading
 
-app = Flask(__name__)
+app = flask(__name__)
 
 CONNECTION_STR = f'Endpoint=sb://ihsuprodcqres003dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=GdhZOuG3QlcPbiI3bSkI22JTXXZ3D0aqkSDaSE2h6hU=;EntityPath=iothub-ehub-raspprojec-16785266-1ec9872978'
 rasp_temp = "Nenhuma atualização ainda"
