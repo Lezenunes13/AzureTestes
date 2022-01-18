@@ -4,6 +4,7 @@ WORKDIR /app
 ADD requirements.txt /app
 ADD main.py /app
 RUN pip3 install -r requirements.txt
+RUN apt-get install git-all
 RUN git clone -b $CLIENT_BRANCH https://github.com/Lezenunes13/AzureTestes.git
 #CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "main:app"]
 
