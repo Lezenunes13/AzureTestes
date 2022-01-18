@@ -1,14 +1,25 @@
-FROM ubuntu:latest
+FROM python:3.7-alpine
+RUN mkdir /app
+WORKDIR /app
+ADD requirements.txt /app
+ADD main.py /app
+RUN pip3 install -r requirements.txt
+RUN git clone -b $CLIENT_BRANCH https://github.com/Lezenunes13/AzureTestes.git
+#CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "main:app"]
+
+ENTRYPOINT FLASK_APP=/home/main.py flask run --host=0.0.0.0 --port=8080
+
+#FROM ubuntu:latest
 #RUN apt update
 #RUN apt upgrade
 #RUN apt install -y python3 python3-pip git
 #RUN apt install -y python3-pip
 
 
-RUN apt-get update --yes
-RUN apt-get update --yes
-RUN apt-get install \
-    python3 --yes \
+#UN apt-get update --yes
+#RUN apt-get update --yes
+#RUN apt-get install \
+    #python3 --yes \
     #python-pip python3-pip python3-virtualenv \
     #virtualenv \
     #python3-numpy \
@@ -16,8 +27,8 @@ RUN apt-get install \
     #libcfitsio-dev \
     #libboost-python-dev \
     #wcslib-dev \
-    git --yes \
-    flask --yes
+    #git --yes \
+    #flask --yes
     #nodejs \
     #phantomjs \
     #ghostscript \
@@ -42,7 +53,7 @@ RUN apt-get install \
 #ARG CARTA_VERSION=1.2.1
 # 1.2.2 has problems in Singularity
 
-RUN git clone -b $CLIENT_BRANCH https://github.com/Lezenunes13/AzureTestes.git
+#RUN git clone -b $CLIENT_BRANCH https://github.com/Lezenunes13/AzureTestes.git
 #RUN pip3 install -e /radiopadre-client
 #ENV RADIOPADRE_CARTA_VERSION=$CARTA_VERSION
 #RUN pip3 install -e /radiopadre
@@ -51,9 +62,9 @@ RUN git clone -b $CLIENT_BRANCH https://github.com/Lezenunes13/AzureTestes.git
 
 #RUN python3 -m pip install flask
 #RUN git clone https://github.com/Lezenunes13/AzureTestes.git
-EXPOSE 8080
-COPY main.py /home/main.py
+#EXPOSE 8080
+#COPY main.py /home/main.py
 
 
 
-ENTRYPOINT FLASK_APP=/home/main.py flask run --host=0.0.0.0 --port=8080
+#ENTRYPOINT FLASK_APP=/home/main.py flask run --host=0.0.0.0 --port=8080
