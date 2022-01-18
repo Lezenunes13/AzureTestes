@@ -5,10 +5,10 @@ FROM ubuntu:latest
 #RUN apt install -y python3-pip
 
 
-RUN apt-get update
-RUN apt-get update
-RUN docker-apt-install \
-    python3 \
+RUN apt-get update --yes
+RUN apt-get update --yes
+RUN apt-get install \
+    python3 --yes \
     #python-pip python3-pip python3-virtualenv \
     #virtualenv \
     #python3-numpy \
@@ -16,8 +16,8 @@ RUN docker-apt-install \
     #libcfitsio-dev \
     #libboost-python-dev \
     #wcslib-dev \
-    git \
-    flask
+    git --yes \
+    flask --yes
     #nodejs \
     #phantomjs \
     #ghostscript \
